@@ -10,6 +10,7 @@ import GetStarted from "../screens/GetStarted"
 import Detail from "../screens/Detail"
 import Categories from "../screens/Categories"
 import BottomNavigator from "../navigators/BottomNavigator"
+import New from '../screens/New';
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -39,10 +40,15 @@ const MainApp = () => {
 
 const HomeRoute = () => {
   return (
-    <Stack.Navigator>
+    <Stack.Navigator initialRouteName='newScreen'>
       <Stack.Screen
         name="GetStarted"
         component={GetStarted}
+        options={{ headerShown: false }}
+      />
+      <Stack.Screen
+        name="newScreen"
+        component={New}
         options={{ headerShown: false }}
       />
       <Stack.Screen
