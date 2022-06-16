@@ -1,0 +1,29 @@
+screen1 :
+    first i will create state object 
+    which will include 
+    const [data, setData]=useState({
+        name:"",
+        city:"",
+        email:""
+    })
+
+    <TextInput/>
+
+
+
+
+screen2:
+
+
+
+
+
+
+
+screen3:
+
+
+
+
+
+screen4:
