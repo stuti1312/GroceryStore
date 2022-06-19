@@ -49,7 +49,6 @@ const BottomNavigator = ({ state, descriptors, navigation }) => {
           });
 
           if (!isFocused && !event.defaultPrevented) {
-            // The `merge: true` option makes sure that the params inside the tab screen are preserved
             navigation.navigate({ name: route.name, merge: true });
           }
         };
@@ -71,7 +70,6 @@ const BottomNavigator = ({ state, descriptors, navigation }) => {
             onPress={onPress}
             onLongPress={onLongPress}>
             <Icon label={label} isFocused={isFocused} />
-            {/* <Text style={{color: isFocused ? '#673ab7' : '#222'}}>{label}</Text> */}
           </TouchableOpacity>
         );
       })}
@@ -85,9 +83,8 @@ const styles = StyleSheet.create({
   container: {
     flexDirection: 'row',
     backgroundColor: colors.WHITE,
-    paddingTop: 28,
-    paddingBottom: 33,
-    paddingHorizontal: 32,
+    paddingVertical: 15,
+    paddingHorizontal: 30,
     justifyContent: 'space-between',
   },
 });

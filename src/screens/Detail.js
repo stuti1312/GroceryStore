@@ -61,49 +61,56 @@ const Detail = ({ route, navigation }) => {
     <SafeAreaView style={styles.flex1(bgColor)}>
       <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
       <View>
-        {/* header */}
-        <Header onPress={() => navigation.goBack()} />
-        {/* image */}
-        <View style={styles.wrapperImg}>
-          <Image source={dataParams.icon} style={styles.image} />
-        </View>
-        {/* content */}
-        <View style={styles.content}>
-          {/* top content */}
-          <View style={styles.wrapperTopContent}>
-            <View style={styles.rowTopContent}>
-              <Text style={styles.name}>{dataParams.name}</Text>
-              <Counter onValueChange={onCounterChange} />
-            </View>
-            <Text style={styles.price}>{dataParams.price} / kg</Text>
+        <ScrollView>
+          {/* header */}
+          <Header onPress={() => navigation.goBack()} />
+          {/* image */}
+          <View style={styles.wrapperImg}>
+            <Image source={dataParams.icon} style={styles.image} />
           </View>
-          {/* description */}
-          <Text style={styles.desc}>{dataParams.desc}</Text>
-          {/* related items */}
-          <View style={styles.wrapperRelatedItems}>
-            <Text style={styles.titleRelatedItems}>Related Items</Text>
-            {/* scrollview */}
-            <ScrollView horizontal showsHorizontalScrollIndicator={false}>
-              <View style={styles.wrapperBoxRelatedItems}>
-                {/* boxrelateditems */}
-                {dataRelatedItems.map((item, index) => {
-                  return (
-                    <BoxRelatedItems
-                      key={index}
-                      image={item.icon}
-                      name={item.name}
-                      price={item.price}
-                      bgColor={item.bgColor}
-                    />
-                  );
-                })}
+          {/* content */}
+          <View style={styles.content}>
+            {/* top content */}
+            <View style={styles.wrapperTopContent}>
+              <View style={styles.rowTopContent}>
+                <Text style={styles.name}>{dataParams.name}</Text>
+                <Counter onValueChange={onCounterChange} />
               </View>
-            </ScrollView>
+              <Text style={styles.price}>{dataParams.price} / kg</Text>
+            </View>
+            {/* description */}
+            <Text style={styles.desc}>{dataParams.desc}</Text>
+
+            {/* button add to cart */}
+            <Gap height={20} />
+            <View style={{ flexDirection: "row", }}>
+              <Button text="Add to cart" onPress={onAddToCart} />
+              <Button text="Add to wishlist" onPress={onAddToWishlist} />
+            </View>
+
+            {/* related items */}
+            <View style={styles.wrapperRelatedItems}>
+              <Text style={styles.titleRelatedItems}>Related Items</Text>
+              {/* scrollview */}
+              <ScrollView horizontal showsHorizontalScrollIndicator={false}>
+                <View style={styles.wrapperBoxRelatedItems}>
+                  {/* boxrelateditems */}
+                  {dataRelatedItems.map((item, index) => {
+                    return (
+                      <BoxRelatedItems
+                        key={index}
+                        image={item.icon}
+                        name={item.name}
+                        price={item.price}
+                        bgColor={item.bgColor}
+                      />
+                    );
+                  })}
+                </View>
+              </ScrollView>
+            </View>
           </View>
-          {/* button add to cart */}
-          <Gap height={50} />
-          <Button text="Add to cart" />
-        </View>
+        </ScrollView>
       </View>
     </SafeAreaView>
   );
@@ -133,6 +140,7 @@ const styles = StyleSheet.create({
     borderTopRightRadius: 40,
     marginTop: 30,
     paddingTop: 34,
+    // paddingHorizontal: 20
   },
   wrapperTopContent: {
     marginBottom: 28,
@@ -159,7 +167,7 @@ const styles = StyleSheet.create({
   },
   titleRelatedItems: {
     fontFamily: fonts.SEMI_BOLD,
-    fontSize: 14,
+    fontSize: 18,
     color: colors.LIGHT_GREEN,
     paddingHorizontal: 20,
   },

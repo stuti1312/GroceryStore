@@ -3,11 +3,14 @@ import React from 'react'
 
 import { colors } from '../styles/Colors';
 import { fonts } from '../styles/Fonts';
+import Gap from '../reusables/Gap';
 
 const Profile = () => {
   return (
-    <View styl={styles.container}>
-      <Text style={styles.txt}>Profile</Text>
+    <View style={{ margin: 20, flex: 1 }}>
+      <Text style={[styles.txt, { flex: 2 }]}>USER PROFILE</Text>
+      <Gap height={20} />
+      <Text style={[styles.txt, { flex: 4 }]}>USER INFO</Text>
     </View>
   )
 }
@@ -15,6 +18,5 @@ const Profile = () => {
 export default Profile
 
 const styles = StyleSheet.create({
-  container: { justifyContent: "center", alignItems: "center", backgroundColor: colors.LIGHT_GRAY, padding: 10, margin: 20 },
-  txt: { color: colors.BLACK, borderWidth: 2, borderRadius: 5, borderColor: colors.GRAY }
+  txt: { color: colors.BLACK, borderWidth: 2, borderRadius: 5, borderColor: colors.GRAY, padding: 20, }
 })

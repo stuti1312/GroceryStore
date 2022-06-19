@@ -3,18 +3,38 @@ import React from 'react'
 
 import { colors } from '../styles/Colors';
 import { fonts } from '../styles/Fonts';
+import Gap from '../reusables/Gap';
+import { DrawerItem } from '@react-navigation/drawer';
 
-const Notifications = () => {
+const Notification = () => {
+  const [data, setData] = useState([])
+  const notificationData = [
+    { id: 1, title: "check your profile", desc: "i'm not complete yet" },
+    { id: 2, title: "check your name", desc: "i'm not complete yet" },
+    { id: 3, title: "check your profile", desc: "i'm not complete yet" },
+    { id: 4, title: "check your store", desc: "i'm not complete yet" },
+    { id: 5, title: "check your account", desc: "i'm not complete yet" },
+  ]
   return (
-    <View styl={styles.container}>
-      <Text style={styles.txt}>Notifications</Text>
+    <View style={{ margin: 20, flex: 1 }}>
+      <Text style={[styles.txt, { flex: 2 }]}>USER PROFILE</Text>
+      <Gap height={20} />
+      <View>
+        <Text style={[styles.txt, { flex: 4 }]}>USER INFO</Text>
+        {data.map((itm, index) => {
+          <>
+            <Text>{itm.title}</Text>
+            <Text>{itm.desc}</Text>
+          </>
+        })}
+
+      </View>
     </View>
   )
 }
 
-export default Notifications
+export default Notification
 
 const styles = StyleSheet.create({
-  container: { justifyContent: "center", alignItems: "center", backgroundColor: colors.LIGHT_GRAY, padding: 10, margin: 20 },
-  txt: { color: colors.BLACK, borderWidth: 2, borderRadius: 5, borderColor: colors.GRAY }
+  txt: { color: colors.BLACK, borderWidth: 2, borderRadius: 5, borderColor: colors.GRAY, padding: 20, }
 })

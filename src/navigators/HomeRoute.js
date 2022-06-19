@@ -1,7 +1,6 @@
 import React from 'react';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-
 import Home from "../screens/Home"
 import Favourites from "../screens/Favourites"
 import Notification from "../screens/Notifications"
@@ -40,7 +39,9 @@ const MainApp = () => {
 
 const HomeRoute = () => {
   return (
-    <Stack.Navigator initialRouteName='newScreen'>
+    <Stack.Navigator 
+    // initialRouteName='newScreen'
+    >
       <Stack.Screen
         name="GetStarted"
         component={GetStarted}

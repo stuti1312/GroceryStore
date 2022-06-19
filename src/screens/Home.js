@@ -29,9 +29,8 @@ import {
   IC_Search,
   IC_Vegetables,
 } from '../assets/Icons/Icon';
-import {colors} from '../styles/Colors';
-import {fonts} from '../styles/Fonts';
-
+import { colors } from '../styles/Colors';
+import { fonts } from '../styles/Fonts';
 const Home = ({ navigation }) => {
   const isDarkMode = useColorScheme() === 'dark';
   const dataTopProducts = [
