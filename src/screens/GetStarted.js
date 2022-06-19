@@ -19,6 +19,7 @@ const GetStarted = ({ navigation }) => {
       <Button
         onPress={() => navigation.replace('MainApp')}
         text="Get Started"
+        bgColor={colors.LIGHT_GREEN}
       />
     </View>
   );

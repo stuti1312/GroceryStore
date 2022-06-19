@@ -8,6 +8,7 @@ import {
   Text,
   useColorScheme,
   View,
+  TouchableOpacity
 } from 'react-native';
 
 import BoxRelatedItems from "../reusables/BoxRelatedItem"
@@ -15,6 +16,7 @@ import Button from "../reusables/Button"
 import Counter from "../reusables/Counter"
 import Header from "../reusables/Header"
 import Gap from "../reusables/Gap"
+import { IC_Love } from '../assets/Icons/Icon';
 import {
   IL_Grapes_PNG,
   IL_Greentea_PNG,
@@ -27,7 +29,7 @@ const Detail = ({ route, navigation }) => {
   const dataParams = route.params;
   const bgColor = route.params.bgColor;
   const isDarkMode = useColorScheme() === 'dark';
-  const [totalItem, setTotalItem] = useState(1);
+  const [totalItem, setTotalItem] = useState(0);
 
   const dataRelatedItems = [
     {
@@ -57,6 +59,18 @@ const Detail = ({ route, navigation }) => {
     setTotalItem(value);
   };
 
+  const onBuyNow = () => {
+    console.log("BUY NOW");
+  }
+
+  const onAddToCart = () => {
+    console.log("ADD TO CART");
+  }
+
+  const onAddToWishlist = () => {
+    console.log("ADD TO WISHLIST");
+  }
+
   return (
     <SafeAreaView style={styles.flex1(bgColor)}>
       <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
@@ -83,9 +97,12 @@ const Detail = ({ route, navigation }) => {
 
             {/* button add to cart */}
             <Gap height={20} />
-            <View style={{ flexDirection: "row", }}>
-              <Button text="Add to cart" onPress={onAddToCart} />
-              <Button text="Add to wishlist" onPress={onAddToWishlist} />
+            <View style={{ flexDirection: "row", justifyContent: "space-evenly",alignItems:"center" }}>
+              <Button text="Buy now" onPress={onBuyNow} bgColor="#ff2e2e" />
+              <Button text="Add to cart" onPress={onAddToCart} bgColor={colors.LIGHT_GREEN} />
+              <TouchableOpacity>
+                <IC_Love />
+              </TouchableOpacity>
             </View>
 
             {/* related items */}
