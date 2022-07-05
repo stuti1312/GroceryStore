@@ -9,7 +9,7 @@ const BoxItemTopProduct = ({ bgColor, icon, text, price, onPress }) => {
     <TouchableOpacity style={styles.container(bgColor)} onPress={onPress}>
       <View style={{ top: -40 }}>
         <View>
-          <Image source={icon} style={styles.image} />
+          <Image source={{uri:icon}} style={styles.image} />
           <Gap height={20} />
           <Text style={styles.text}>{text}</Text>
         </View>

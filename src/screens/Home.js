@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   View,
   Text,
@@ -10,17 +10,12 @@ import {
   TextInput,
   TouchableOpacity,
 } from 'react-native';
+import axios from 'axios';
 
 import BoxItemTopProduct from "../reusables/BoxItemTopProduct"
 import BoxItemCategories from "../reusables/BoxItemCategories"
 import Header from "../reusables/Header"
 import Gap from "../reusables/Gap"
-import {
-  IL_Cauliflawer_PNG,
-  IL_Grapes_PNG,
-  IL_Greentea_PNG,
-  IL_Tomato_PNG,
-} from '../assets/images/Images';
 import {
   IC_Bakery,
   IC_Bakery2,
@@ -31,67 +26,19 @@ import {
 } from '../assets/Icons/Icon';
 import { colors } from '../styles/Colors';
 import { fonts } from '../styles/Fonts';
+
 const Home = ({ navigation }) => {
   const isDarkMode = useColorScheme() === 'dark';
-  const dataTopProducts = [
-    {
-      name: 'Grapes',
-      icon: IL_Grapes_PNG,
-      bgColor: 'rgba(227,206,243,0.5)',
-      price: 1.53,
-      like:0,
-      desc: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
-    },
-    {
-      name: 'Tometo',
-      icon: IL_Tomato_PNG,
-      bgColor: 'rgba(255, 234, 232, 0.5)',
-      price: 1.53,
-      desc: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
-    },
-    {
-      name: 'Drinks',
-      icon: IL_Greentea_PNG,
-      bgColor: 'rgba(187, 208, 136, 0.5)',
-      price: 1.53,
-      desc: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
-    },
-    {
-      name: 'Cauliflower',
-      icon: IL_Cauliflawer_PNG,
-      bgColor: 'rgba(140, 250, 145,0.5)',
-      price: 1.53,
-      desc: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
-    },
-    {
-      name: 'Grapes',
-      icon: IL_Grapes_PNG,
-      bgColor: 'rgba(227,206,243,0.5)',
-      price: 1.53,
-      desc: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
-    },
-    {
-      name: 'Tometo',
-      icon: IL_Tomato_PNG,
-      bgColor: 'rgba(255, 234, 232, 0.5)',
-      price: 1.53,
-      desc: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
-    },
-    {
-      name: 'Drinks',
-      icon: IL_Greentea_PNG,
-      bgColor: 'rgba(187, 208, 136, 0.5)',
-      price: 1.53,
-      desc: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
-    },
-    {
-      name: 'Cauliflower',
-      icon: IL_Cauliflawer_PNG,
-      bgColor: 'rgba(140, 250, 145,0.5)',
-      price: 1.53,
-      desc: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
-    },
-  ];
+  const [dataTopProducts, setDataTopProducts] = useState([])
+  useEffect(() => {
+    axios.get("https://run.mocky.io/v3/db69c7a7-a22f-4f4f-9ecc-a2b5792e8901")
+      .then(res => {
+        console.log("RES", res);
+        setDataTopProducts(res.data)
+      })
+      .catch(err => console.log("ERR", err))
+  }, [])
+
   return (
     <SafeAreaView style={styles.flex1}>
       <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />

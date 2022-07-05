@@ -80,7 +80,7 @@ const Detail = ({ route, navigation }) => {
           <Header onPress={() => navigation.goBack()} />
           {/* image */}
           <View style={styles.wrapperImg}>
-            <Image source={dataParams.icon} style={styles.image} />
+            <Image source={{uri:dataParams.icon}} style={styles.image} />
           </View>
           {/* content */}
           <View style={styles.content}>
